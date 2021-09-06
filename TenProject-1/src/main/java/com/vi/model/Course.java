@@ -14,6 +14,7 @@ import javax.persistence.Id;
 import javax.persistence.ManyToMany;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
+import javax.validation.constraints.NotBlank;
 
 import org.springframework.stereotype.Component;
 import com.fasterxml.jackson.annotation.JsonIdentityInfo;
@@ -34,6 +35,7 @@ public class Course {
 	public int courseId;
 
 	@Column(nullable = false)
+	@NotBlank
 	public String courseName;
 
 	@Column(nullable = false)
