@@ -210,6 +210,15 @@ public class MainController {
 		throw new ResourceNotFoundException("No such customer Exist");
 	}
 
+	@Operation(summary = "Update Course")
+	@ApiResponses(value = { @ApiResponse(responseCode = "202", description = "Course updated", content = {
+			@Content(mediaType = "application/json", schema = @Schema(implementation = Course.class)) }),
+			@ApiResponse(responseCode = "404", description = "No course Found", content = {
+					@Content(mediaType = "application/json", schema = @Schema(implementation = ErrorDetails.class)) }),
+			@ApiResponse(responseCode = "400", description = "Bad Request", content = {
+					@Content(mediaType = "application/json", schema = @Schema(implementation = ErrorDetails.class)) }),
+			@ApiResponse(responseCode = "500", description = "internal server error", content = {
+					@Content(mediaType = "application/json", schema = @Schema(implementation = ErrorDetails.class)) }) })
 	@PutMapping(path = "course/update/{courseId}", consumes = "application/json", produces = "application/json")
 	public ResponseEntity<Object> updateCourse(@Validated @RequestBody Course course, @PathVariable int courseId,
 			Errors error) {
