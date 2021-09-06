@@ -42,9 +42,11 @@ public class Course {
 	public String description;
 
 	@Column
+	@NotBlank
 	public double courseFee;
 
 	@Column(nullable = false)
+	@NotBlank
 	public double duration;
 
 	@Column

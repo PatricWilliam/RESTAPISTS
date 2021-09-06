@@ -11,6 +11,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
+import javax.validation.constraints.NotBlank;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
 
@@ -25,9 +26,11 @@ public class OrderCourseRelation {
 	public int id;
 
 	@Column
+	@NotBlank
 	public int courseId;
 
 	@Column
+	@NotBlank
 	public String courseName;
 
 	@Column
