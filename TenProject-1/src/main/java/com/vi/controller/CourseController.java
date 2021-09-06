@@ -7,7 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 
 import com.vi.model.Course;
-import com.vi.model.CustomerDetails;
+
 import com.vi.repo.CouseRepostory;
 
 @Controller

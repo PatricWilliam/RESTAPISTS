@@ -65,9 +65,8 @@ public class MainController {
 	}
 
 	@Operation(summary = "Course Create")
-	@ApiResponses(value = {
-			@ApiResponse(responseCode = "201", description = "Course created", content = {
-					@Content(mediaType = "application/json",array=@ArraySchema(arraySchema = @Schema(implementation = Course.class))) }),
+	@ApiResponses(value = { @ApiResponse(responseCode = "201", description = "Course created", content = {
+			@Content(mediaType = "application/json", array = @ArraySchema(arraySchema = @Schema(implementation = Course.class))) }),
 			@ApiResponse(responseCode = "400", description = "Bad Request", content = {
 					@Content(mediaType = "application/json", schema = @Schema(implementation = ErrorDetails.class)) }),
 			@ApiResponse(responseCode = "500", description = "internal server error", content = {
@@ -126,8 +125,9 @@ public class MainController {
 	}
 
 	@Operation(summary = "Create Order")
-	@ApiResponses(value = { @ApiResponse(responseCode = "202", description = "Order Accepted", content = {
-			@Content(mediaType = "application/json", schema = @Schema(implementation =  Order.class)) }),
+	@ApiResponses(value = {
+			@ApiResponse(responseCode = "202", description = "Order Accepted", content = {
+					@Content(mediaType = "application/json", schema = @Schema(implementation = Order.class)) }),
 			@ApiResponse(responseCode = "404", description = "No Customer Found", content = {
 					@Content(mediaType = "application/json", schema = @Schema(implementation = ErrorDetails.class)) }),
 			@ApiResponse(responseCode = "500", description = "internal server error", content = {
@@ -147,8 +147,9 @@ public class MainController {
 	}
 
 	@Operation(summary = "Add Course to Cart")
-	@ApiResponses(value = { @ApiResponse(responseCode = "202", description = "Courses Added", content = {
-			@Content(mediaType = "application/json", schema = @Schema(implementation = Cart.class)) }),
+	@ApiResponses(value = {
+			@ApiResponse(responseCode = "202", description = "Courses Added", content = {
+					@Content(mediaType = "application/json", schema = @Schema(implementation = Cart.class)) }),
 			@ApiResponse(responseCode = "404", description = "No Cart Found", content = {
 					@Content(mediaType = "application/json", schema = @Schema(implementation = ErrorDetails.class)) }),
 			@ApiResponse(responseCode = "404", description = "No Course Found", content = {
@@ -167,8 +168,9 @@ public class MainController {
 	}
 
 	@Operation(summary = "Remove Course to Cart")
-	@ApiResponses(value = { @ApiResponse(responseCode = "202", description = "Courses removed", content = {
-			@Content(mediaType = "application/json", schema = @Schema(implementation = Cart.class)) }),
+	@ApiResponses(value = {
+			@ApiResponse(responseCode = "202", description = "Courses removed", content = {
+					@Content(mediaType = "application/json", schema = @Schema(implementation = Cart.class)) }),
 			@ApiResponse(responseCode = "404", description = "No Cart Found", content = {
 					@Content(mediaType = "application/json", schema = @Schema(implementation = ErrorDetails.class)) }),
 			@ApiResponse(responseCode = "404", description = "No Course Found", content = {
@@ -187,6 +189,15 @@ public class MainController {
 		throw new ResourceNotFoundException("No  cart found");
 	}
 
+	@Operation(summary = "Update Customer")
+	@ApiResponses(value = { @ApiResponse(responseCode = "202", description = "Customer Details updated", content = {
+			@Content(mediaType = "application/json", schema = @Schema(implementation = CustomerDetails.class)) }),
+			@ApiResponse(responseCode = "404", description = "No Customer Found", content = {
+					@Content(mediaType = "application/json", schema = @Schema(implementation = ErrorDetails.class)) }),
+			@ApiResponse(responseCode = "400", description = "Bad Request", content = {
+					@Content(mediaType = "application/json", schema = @Schema(implementation = ErrorDetails.class)) }),
+			@ApiResponse(responseCode = "500", description = "internal server error", content = {
+					@Content(mediaType = "application/json", schema = @Schema(implementation = ErrorDetails.class)) }) })
 	@PutMapping(path = "customer/update/{customerId}", consumes = "application/json", produces = "application/json")
 	public ResponseEntity<Object> updateCustomer(@Validated @RequestBody CustomerDetails customer,
 			@PathVariable int customerId, Errors error) {
