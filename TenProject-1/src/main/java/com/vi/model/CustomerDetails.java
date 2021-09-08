@@ -17,11 +17,11 @@ import javax.validation.constraints.NotBlank;
 
 import org.springframework.stereotype.Component;
 
-@Component
-@Entity
+@Component //create bean
+@Entity // JPA mapping for table in the Db
 @Table(name = "CustomerDetails")
 public class CustomerDetails {
-	@Id
+	@Id// primary key
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "customer_id")
 	@SequenceGenerator(sequenceName = "customer_id", allocationSize = 100, name = "customer_id")
 	public long customerId;

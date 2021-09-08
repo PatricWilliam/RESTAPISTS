@@ -17,16 +17,15 @@ import javax.persistence.Table;
 import javax.validation.constraints.NotBlank;
 
 import org.springframework.stereotype.Component;
-import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+
+
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 
 import io.swagger.v3.oas.annotations.media.Schema;
 
 @Component
 @Entity
 @Table(name = "Course")
-@JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "courseId")
 @JsonIgnoreProperties(value = { "carts", "cart" })
 public class Course {
 	@Id
@@ -59,7 +58,6 @@ public class Course {
 	public boolean isStockAvailable;
 
 	@ManyToMany(cascade = CascadeType.ALL, mappedBy = "courses", fetch = FetchType.LAZY)
-	
 	@Schema(hidden = true)
 	public Set<Cart> carts = new HashSet<Cart>();
 

@@ -12,9 +12,15 @@ import org.springframework.web.context.request.WebRequest;
 public class GlobalExceptionHandler {
 
 	@ExceptionHandler(ResourceNotFoundException.class)
-	public ResponseEntity<?> resourceNotFoundHandling(ResourceNotFoundException exception, WebRequest request) {
+	public ResponseEntity<Object> resourceNotFoundHandling(ResourceNotFoundException exception, WebRequest request) {
 		ErrorDetails errorDetails = new ErrorDetails(exception.getMessage(), new Date(), request.getDescription(false));
 		return new ResponseEntity<>(errorDetails, HttpStatus.NOT_FOUND);
+	}
+
+	@ExceptionHandler(DataValidationException.class)
+	public ResponseEntity<?> dataValidationException(DataValidationException exception, WebRequest request) {
+		ErrorDetails errorDetails = new ErrorDetails(exception.getMessage(), new Date(), request.getDescription(false));
+		return new ResponseEntity<>(errorDetails, HttpStatus.BAD_REQUEST);
 	}
 	
 	@ExceptionHandler(UnauthorisedException.class)
