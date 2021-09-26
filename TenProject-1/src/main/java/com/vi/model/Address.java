@@ -1,6 +1,6 @@
 package com.vi.model;
 
-import javax.persistence.CascadeType;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -49,7 +49,7 @@ public class Address {
 	@Column(length = 20)
 	public long pincode;
 
-	@OneToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+	@OneToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "customerId", nullable = false)
 	@JsonBackReference
 	@Schema(hidden = true)
@@ -127,10 +127,6 @@ public class Address {
 		this.pincode = pincode;
 	}
 
-	@Override
-	public String toString() {
-		return "Address [houseNo=" + houseNo + ", street=" + street + ", area=" + area + ", city=" + city + ", State="
-				+ State + ", country=" + country + ", pincode=" + pincode + "]";
-	}
+
 
 }

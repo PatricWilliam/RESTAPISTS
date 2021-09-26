@@ -52,7 +52,7 @@ public class Order {
 	@Column
 	public double amountPaid;
 
-	@OneToMany(mappedBy = "order", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+	@OneToMany(mappedBy = "order", cascade = CascadeType.ALL)
 	public List<OrderCourseRelation> orderCourses;
 
 	public int getOrderId() {

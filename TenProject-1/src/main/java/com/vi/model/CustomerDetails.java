@@ -5,7 +5,6 @@ import java.util.List;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -52,13 +51,13 @@ public class CustomerDetails {
 	@NotBlank
 	public String password;
 
-	@OneToOne(mappedBy = "customerDetails", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+	@OneToOne(mappedBy = "customerDetails", cascade = CascadeType.ALL)
 	public Address address;
 	
-	@OneToOne(mappedBy = "customerDetails", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+	@OneToOne(mappedBy = "customerDetails", cascade = CascadeType.ALL)
 	public Cart cart;
 
-	@OneToMany(mappedBy = "customerDetails", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+	@OneToMany(mappedBy = "customerDetails", cascade = CascadeType.ALL)
 	public List<Order> order;
 
 	public String getUserName() {
@@ -163,11 +162,6 @@ public class CustomerDetails {
 		this.emailId = emailId;
 	}
 
-	@Override
-	public String toString() {
-		return "CustomerDetails [customerId=" + customerId + ", firstName=" + firstName + ", middleName=" + middleName
-				+ ", lastName=" + lastName + ", phoneExtension=" + phoneExtension + ", phone=" + phone + ", emailId="
-				+ emailId + "]";
-	}
+	
 
 }

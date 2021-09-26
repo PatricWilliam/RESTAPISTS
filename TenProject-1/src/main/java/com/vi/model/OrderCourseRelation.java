@@ -1,6 +1,6 @@
 package com.vi.model;
 
-import javax.persistence.CascadeType;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -36,7 +36,7 @@ public class OrderCourseRelation {
 	@Column
 	public boolean isCompleted;
 
-	@ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "orderId", nullable = false)
 	@JsonBackReference
 	@Schema(hidden = true)

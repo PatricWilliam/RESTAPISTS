@@ -32,7 +32,7 @@ public class Cart {
 	@SequenceGenerator(sequenceName = "cart_id", allocationSize = 30, name = "cart_id")
 	public int cartId;
 
-	@OneToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+	@OneToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "customerId", nullable = false)
 	@JsonBackReference(value = "customerDetails")
 	@Schema(hidden = true)
