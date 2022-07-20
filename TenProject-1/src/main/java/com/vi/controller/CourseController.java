@@ -14,6 +14,7 @@ import com.vi.repo.CouseRepostory;
 public class CourseController {
 	@Autowired
 	public CouseRepostory courserepo;
+	//Course Controoler git
 
 	public List<Course> createCourse(List<Course> courses) {
 		return courserepo.saveAll(courses);
