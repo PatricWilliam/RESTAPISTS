@@ -19,7 +19,8 @@ public class CartController {
 	public CartRepostory cartRepo;
 	@Autowired
 	public CouseRepostory courseRepo;
-
+	
+// this is a cart controoler to add and remove the cart....
 	public boolean cartAvailbale(int cartId) {
 
 		return cartRepo.existsById(cartId);
